@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Login } from "./pages/login-cadastro/login/index";
 import { Cadastro } from "./pages/login-cadastro/cadastro/index";
-import { EsqueciSenha } from "./pages/login-cadastro/senha/index";
+import { EsqueciSenha } from "./pages/login-cadastro/esqueci-senha/index";
 
 function App() {
   return (

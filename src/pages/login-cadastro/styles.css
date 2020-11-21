@@ -1,0 +1,217 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#root {
+  flex: 0 1 410px;
+}
+
+.centro {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.painelLogin {
+  flex: 1 1 510px;
+  background: #ffffff;
+  box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+}
+
+.formulario {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  padding: 2.5em 3em;
+  transition: 0.5s;
+}
+
+.formulario img {
+  height: calc(25px + 1vw);
+}
+
+form {
+  width: 100%;
+  margin-top: 3.5em;
+}
+
+form,
+form label {
+  display: flex;
+  flex-flow: column;
+}
+
+form label:not(.senha) {
+  margin-bottom: 2.5em;
+}
+
+label span {
+  margin-left: 0.7em;
+  font-weight: 600;
+  font-size: calc(15px + 0.1vw);
+  color: #374952;
+}
+
+label input {
+  font-size: calc(12px + 0.1vw) !important;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #4c4c4c;
+  color: #a5a5a5;
+  font-size: 14px;
+  padding: 1em;
+  margin-top: 1em;
+  transition: 0.2s;
+}
+
+.erro {
+  box-shadow: 0px 0px 10px red;
+}
+
+.carregando {
+  align-self: center;
+  display: flex;
+  align-items: center;
+}
+
+.emailAtivo,
+.nomeAtivo {
+  color: #4c4c4c;
+}
+
+.senhaAtiva {
+  color: #4c4c4c;
+  letter-spacing: 0.3em;
+}
+
+.botaoAtivo {
+  background: #da0175;
+}
+
+form .esqueci {
+  margin-top: 1em;
+  align-self: flex-end;
+  font-weight: normal;
+  font-size: calc(12px + 0.1vw);
+}
+
+form .esqueci .link {
+  text-decoration-line: underline;
+  color: #263238;
+}
+
+.cadastrarFooter {
+  margin-top: 2em;
+  align-self: center;
+}
+
+.cadastrarFooter .link {
+  text-decoration-line: underline;
+  color: #da0175;
+}
+
+.descricao {
+  align-self: center;
+  color: #4c4c4c;
+  font-size: calc(14px + 0.1vw);
+  font-weight: normal;
+}
+
+.recuperar {
+  margin-top: 3em;
+}
+
+button {
+  font-size: calc(12px + 0.1vw);
+  margin-top: 1em;
+  align-self: center;
+  background: rgba(218, 1, 117, 0.35);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 170px;
+  flex: 0 1 45px;
+  color: #f7f7f7;
+  border: 0;
+  cursor: pointer;
+}
+
+form button:hover {
+  box-shadow: 0px 0px 32px rgba(218, 1, 117, 0.35);
+}
+
+.confirirEmail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirirEmail > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirirEmail div > img {
+  height: 60px;
+  margin-top: 4em;
+}
+
+.confirirEmail div > h2 {
+  color: #4c4c4c;
+  font-weight: 600;
+  font-size: calc(22px + 0.1vw);
+  line-height: 29px;
+  margin-top: 2em;
+}
+
+.confirirEmail div div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5em;
+}
+
+.confirirEmail div div p {
+  font-weight: normal;
+  font-size: calc(14px + 0.1vw);
+  line-height: 20px;
+  color: #4c4c4c;
+}
+
+.entendi {
+  margin-top: 4em !important;
+  background-color: transparent;
+  border: 2px solid #da0175 !important;
+  color: #da0175 !important;
+  font-style: normal;
+  font-weight: 600;
+  font-size: calc(12px + 0.1vw);
+}
+
+@media (max-width: 415px) {
+  .painelLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  .formulario {
+    padding: 2.5em 1em;
+  }
+
+  .confirirEmail div div {
+    align-items: flex-start;
+  }
+}
