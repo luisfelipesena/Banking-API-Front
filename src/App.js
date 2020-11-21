@@ -5,7 +5,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component />
+        <Route exact path="/" component={<div>Hello</div>} />
       </Switch>
     </BrowserRouter>
   );
