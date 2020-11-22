@@ -14,7 +14,7 @@ export const Home = () => {
                 </li>
                 <li>
                   <img alt="cobrancas" src="./images/cobrancas.svg" />
-                  <span className="descricao">Cobrancas</span>
+                  <span className="descricao">Cobrancas </span>
                 </li>
                 <li>
                   <img alt="clientes" src="./images/clientes.svg" />
