@@ -21,7 +21,7 @@ export const Form = () => {
           setCarregando(true);
           const r = await login(dados.email, dados.senha);
           setCarregando(false);
-          r ? (window.location.href = "/main") : setErro(true);
+          r ? (window.location.href = "/home") : setErro(true);
         }
       })}
     >
