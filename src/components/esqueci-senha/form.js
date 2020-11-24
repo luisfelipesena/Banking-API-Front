@@ -58,7 +58,7 @@ export const Form = () => {
       ) : (
         <div className="confirirEmail">
           <div>
-            <img src="./images/email.svg" alt="email" />
+            <img src="../../../assets/email.svg" alt="email" />
             <h2>Confira seu e-mail</h2>
             <div>
               <p>Enviamos as instruções para</p>

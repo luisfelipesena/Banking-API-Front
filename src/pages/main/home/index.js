@@ -1,29 +1,64 @@
+import React from "react";
+import "../styles.css";
+import logo_cubos_white from "../../../assets/logo_cubos_white.svg";
+import home from "../../../assets/home.svg";
+import cobrancas from "../../../assets/cobrancas.svg";
+import clientes from "../../../assets/clientes.svg";
+import { Main } from "../../../components/home/index";
+
 export const Home = () => {
   const token = localStorage.getItem("token");
+  const [itemClicado, setItemClicado] = React.useState("home");
   return (
     <>
       {token && token !== "null" ? (
         <div className="colunas">
           <div className="barra-lateral">
-            <img alt="logo cubos" src="./images/logo_cubos.svg" />
-            <div className="listagem">
-              <ul>
-                <li>
-                  <img alt="home" src="./images/home.svg" />
-                  <span className="descricao">Home</span>
-                </li>
-                <li>
-                  <img alt="cobrancas" src="./images/cobrancas.svg" />
-                  <span className="descricao">Cobrancas </span>
-                </li>
-                <li>
-                  <img alt="clientes" src="./images/clientes.svg" />
-                  <span className="descricao">Clientes</span>
-                </li>
-              </ul>
-            </div>
+            <img
+              className="logo-cubos"
+              alt="logo cubos"
+              src={logo_cubos_white}
+            />
+            <ul>
+              <li
+                className={itemClicado === "home" ? "li-clicado" : ""}
+                onClick={() => {
+                  setItemClicado("home");
+                }}
+              >
+                <div className="divImagens">
+                  <img alt="home" src={home} />
+                </div>
+                <span className="descricao">Home</span>
+              </li>
+
+              <li
+                className={itemClicado === "cobrancas" ? "li-clicado" : ""}
+                onClick={() => {
+                  setItemClicado("cobrancas");
+                }}
+              >
+                <div className="divImagens">
+                  <img alt="cobrancas" src={cobrancas} />
+                </div>
+                <span className="descricao">Cobrancas </span>
+              </li>
+
+              <li
+                className={itemClicado === "clientes" ? "li-clicado" : ""}
+                onClick={() => {
+                  setItemClicado("clientes");
+                }}
+              >
+                <div className="divImagens">
+                  <img alt="clientes" src={clientes} />
+                </div>
+                <span className="descricao">Clientes</span>
+              </li>
+            </ul>
+            <button>Criar cobrança</button>
           </div>
-          <div className="conteudo"></div>
+          <Main />
         </div>
       ) : (
         (window.location.href = "/")

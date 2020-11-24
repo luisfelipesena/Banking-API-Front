@@ -1,0 +1,69 @@
+.colunas {
+  display: flex;
+}
+
+.barra-lateral {
+  height: 100vh;
+  position: sticky;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #263238;
+  display: flex;
+  flex-flow: column;
+  flex: 0 1 calc(250px + 2vw);
+}
+
+.logo-cubos {
+  margin-top: 2em;
+  margin-bottom: 3.6em;
+  height: calc(25px + 0.5vw);
+}
+
+.divImagens {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 40px;
+}
+
+.divImagens img {
+  height: calc(20px + 1vw);
+}
+
+.barra-lateral ul {
+  margin-bottom: 340px;
+}
+
+.barra-lateral li {
+  display: flex;
+  padding: 20px 48px;
+  cursor: pointer;
+}
+
+.barra-lateral button {
+  font-size: calc(12px + 0.1vw);
+  align-self: center;
+  background: #da0175;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 226px;
+  flex: 0 1 45px;
+  color: #f7f7f7;
+  border: 0;
+  cursor: pointer;
+}
+
+.li-clicado {
+  background-color: #374952;
+}
+
+.barra-lateral li span {
+  margin-left: 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: calc(11px + 0.2vw);
+  line-height: 15px;
+  color: #ffffff;
+}
