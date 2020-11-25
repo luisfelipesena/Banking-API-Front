@@ -192,7 +192,7 @@ form button:hover {
   font-size: calc(12px + 0.1vw);
 }
 
-@media (max-width: 415px) {
+@media (max-width: 500px) {
   .painelLogin {
     display: flex;
     justify-content: center;
@@ -200,7 +200,7 @@ form button:hover {
     box-shadow: none;
   }
 
-  body {
+  .body {
     background: #ffffff;
   }
 
