@@ -55,12 +55,6 @@
   cursor: pointer;
 }
 
-@media (max-width: 1450px) {
-  .barra-lateral > button {
-    width: 70%;
-  }
-}
-
 .li-clicado {
   background-color: #374952;
 }
@@ -80,12 +74,18 @@
 
 .header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #ffffff;
-  padding: 0 5em;
   height: 200px;
   width: 100%;
+}
+
+.header-content {
+  margin: 0 5em;
+  flex: 0 1 calc(1500px + 25vw);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .divSaldo {
@@ -153,4 +153,112 @@
   box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 1.2em 0.6em;
+}
+
+.divConteudo {
+  display: flex;
+  flex-direction: column;
+  margin: 65px 80px;
+  max-width: 100%;
+}
+
+.temporalidades {
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px solid #263238;
+}
+
+.temporalidades button {
+  border: 3px solid transparent;
+  outline: 0;
+  cursor: pointer;
+  background-color: transparent;
+  color: #667e87;
+  padding: 4px;
+  margin-right: 2em;
+  height: 36px;
+}
+
+.temporalidades span {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.temporalidades .temporalidade-escolhida {
+  border-bottom: 3px solid #263238;
+  color: #263238;
+}
+
+.divBlocks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.clientes,
+.cobrancas,
+.faturamento {
+  flex: 0 1 40%;
+  background: #ffffff;
+  box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  min-height: 350px;
+  min-width: 450px;
+  margin-bottom: 40px;
+}
+
+.faturamento {
+  flex: 0 1 100%;
+}
+
+.clientes {
+  margin-right: 40px;
+}
+
+.clientes .header-clientes,
+.header-cobrancas {
+  background: #374952;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  color: #ffffff;
+}
+
+@media (max-width: 1347px) {
+  .barra-lateral > button {
+    width: 70%;
+  }
+
+  .divConteudo,
+  .temporalidades {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .divConteudo {
+    padding: 0 80px;
+    min-width: 100%;
+  }
+
+  .clientes {
+    margin-right: 0;
+  }
+
+  .divBlocks {
+    justify-content: center;
+    gap: 2em;
+  }
+}
+
+@media (max-width: 1000px) {
+  .barra-lateral {
+    display: none;
+  }
+  .temporalidades button {
+    height: 80px;
+  }
 }
