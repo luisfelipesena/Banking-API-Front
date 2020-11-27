@@ -4,26 +4,34 @@ import cobrancas from "../../assets/cobrancas.svg";
 import faturamento from "../../assets/faturamento.svg";
 
 export const Content = () => {
-  const [temporalidade, setTemporalidade] = React.useState("mes");
+  const [temporalidadeGeral, setTemporalidadeGeral] = React.useState("mes");
+  const [
+    temporalidadeFaturamento,
+    setTemporalidadeFaturamento,
+  ] = React.useState("mes");
   return (
     <div className="divConteudo">
       <div className="temporalidades">
         <button
-          onClick={() => setTemporalidade("mes")}
-          className={temporalidade === "mes" ? "temporalidade-escolhida" : ""}
+          onClick={() => setTemporalidadeGeral("mes")}
+          className={
+            temporalidadeGeral === "mes" ? "temporalidade-escolhida" : ""
+          }
         >
           <span>Este mês</span>
         </button>
         <button
-          onClick={() => setTemporalidade("ano")}
-          className={temporalidade === "ano" ? "temporalidade-escolhida" : ""}
+          onClick={() => setTemporalidadeGeral("ano")}
+          className={
+            temporalidadeGeral === "ano" ? "temporalidade-escolhida" : ""
+          }
         >
           <span>Este ano</span>
         </button>
         <button
-          onClick={() => setTemporalidade("sempre")}
+          onClick={() => setTemporalidadeGeral("sempre")}
           className={
-            temporalidade === "sempre" ? "temporalidade-escolhida" : ""
+            temporalidadeGeral === "sempre" ? "temporalidade-escolhida" : ""
           }
         >
           <span>Desde o início</span>
@@ -37,12 +45,12 @@ export const Content = () => {
             <h2>Clientes</h2>
           </div>
           <div className="relatorio-clientes">
-            <div className="em-dia">
+            <div className="verde">
               <span>Em dia</span>
               <h2>0</h2>
             </div>
-            <div className="inadimplentes">
-              <span>inadimplentes</span>
+            <div className="vermelho">
+              <span>Inadimplentes</span>
               <h2>0</h2>
             </div>
           </div>
@@ -54,12 +62,16 @@ export const Content = () => {
             <h2>Cobrancas</h2>
           </div>
           <div className="relatorio-cobrancas">
-            <div className="em-dia">
-              <span>Em dia</span>
+            <div className="azul">
+              <span>Previstas</span>
               <h2>0</h2>
             </div>
-            <div className="inadimplentes">
-              <span>inadimplentes</span>
+            <div className="vermelho">
+              <span>Vencidas</span>
+              <h2>0</h2>
+            </div>
+            <div className="verde">
+              <span>Pagas </span>
               <h2>0</h2>
             </div>
           </div>
@@ -70,15 +82,32 @@ export const Content = () => {
             <img alt="faturamento" src={faturamento} />
             <h2>Faturamento</h2>
           </div>
-          <div className="relatorio-faturamento">
-            <div className="em-dia">
-              <span>Em dia</span>
-              <h2>0</h2>
+
+          <div className="faturamento-content">
+            <div className="temporalidades">
+              <button
+                onClick={() => setTemporalidadeFaturamento("mes")}
+                className={
+                  temporalidadeFaturamento === "mes"
+                    ? "temporalidade-escolhida"
+                    : ""
+                }
+              >
+                <span>Por mês</span>
+              </button>
+              <button
+                onClick={() => setTemporalidadeFaturamento("dia")}
+                className={
+                  temporalidadeFaturamento === "dia"
+                    ? "temporalidade-escolhida"
+                    : ""
+                }
+              >
+                <span>Por dia </span>
+              </button>
             </div>
-            <div className="inadimplentes">
-              <span>inadimplentes</span>
-              <h2>0</h2>
-            </div>
+
+            {/* Gráfico */}
           </div>
         </div>
       </div>

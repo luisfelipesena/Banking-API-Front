@@ -5,9 +5,8 @@ import logo_cubos_white from "../../../assets/logo_cubos_white.svg";
 import home from "../../../assets/home.svg";
 import cobrancas from "../../../assets/cobrancas.svg";
 import clientes from "../../../assets/clientes.svg";
-import { Main } from "../../../components/home/index";
 
-export const Home = () => {
+export const Clientes = () => {
   const token = localStorage.getItem("token");
   const [, , , url] = `${document.URL}`.split("/");
   return (
@@ -53,7 +52,7 @@ export const Home = () => {
             </ul>
             <button>Criar cobrança</button>
           </div>
-          <Main />
+          {/* Cobranças */}
         </div>
       ) : (
         (window.location.href = "/")

@@ -1,19 +1,14 @@
 import React from "react";
-import cifrao from "../../assets/cifrao.svg";
 import user from "../../assets/perfil.svg";
 import logout from "../../assets/logout.svg";
 
 export const Header = () => {
   const [deslogar, setDeslogar] = React.useState(false);
   return (
-    <div className="header">
+    <div className="cobrancas-header">
       <div className="header-content">
-        <div className="divSaldo">
-          <div className="saldo">
-            <img src={cifrao} alt="cifrao" />
-            <span>Saldo em conta</span>
-          </div>
-          <h2>R$ 0,00</h2>
+        <div className="criar-cobranca">
+          <h2>{"// criar cobrança"}</h2>
         </div>
         <div className="usuario">
           <button onClick={() => setDeslogar(deslogar ? false : true)}>
