@@ -11,14 +11,12 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <div className="all">
-          <Route exact path="/" component={Login} />
-          <Route exact path="/cadastro" component={Cadastro} />
-          <Route exact path="/esqueci-senha" component={EsqueciSenha} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/cobrancas" component={Cobrancas} />
-          <Route exact path="/clientes" component={Clientes} />
-        </div>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/cadastro" component={Cadastro} />
+        <Route exact path="/esqueci-senha" component={EsqueciSenha} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/cobrancas" component={Cobrancas} />
+        <Route exact path="/clientes" component={Clientes} />
       </Switch>
     </BrowserRouter>
   );

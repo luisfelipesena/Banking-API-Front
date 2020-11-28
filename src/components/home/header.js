@@ -2,9 +2,12 @@ import React from "react";
 import cifrao from "../../assets/cifrao.svg";
 import user from "../../assets/perfil.svg";
 import logout from "../../assets/logout.svg";
+import { UseMediaQuery } from "../../utils/mediaQuery";
 
 export const Header = () => {
+  const width = UseMediaQuery("(max-width: 700px)");
   const [deslogar, setDeslogar] = React.useState(false);
+
   return (
     <div className="header">
       <div className="header-content">
@@ -16,10 +19,12 @@ export const Header = () => {
           <h2>R$ 0,00</h2>
         </div>
         <div className="usuario">
-          <button onClick={() => setDeslogar(deslogar ? false : true)}>
-            <img src={user} alt="usuário" />
-          </button>
-          {deslogar && (
+          {!width && (
+            <button onClick={() => setDeslogar(deslogar ? false : true)}>
+              <img src={user} alt="usuário" />
+            </button>
+          )}
+          {(deslogar || width) && (
             <button
               onClick={() => {
                 localStorage.setItem("token", null);

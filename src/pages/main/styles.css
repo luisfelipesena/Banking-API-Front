@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
 .colunas {
   display: flex;
 }
@@ -109,9 +112,9 @@
   display: flex;
   align-items: center;
   font-weight: normal;
-  font-size: calc(17px + 0.2vw);
   line-height: 29px;
   text-transform: uppercase;
+  align-self: center;
 }
 
 .saldo {
@@ -308,14 +311,14 @@
 .formulario-cobranca {
   display: flex;
   justify-content: center;
+  margin: 0 5em;
+  background: #ffffff;
 }
 
 .formulario-cobranca form {
   padding: 2em 0;
   display: flex;
-  align-items: center;
-  flex: 0 1 70%;
-  background: #ffffff;
+  flex: 0 1 50%;
   border-radius: 16px;
 }
 
@@ -324,17 +327,113 @@
 .form-botoes {
   width: 100%;
   display: flex;
+  justify-content: center;
 }
 
-.formulario-cobranca input,
-.formulario-cobranca select {
+.formulario-cobranca input {
   border: 1px solid #374952;
   box-sizing: border-box;
   border-radius: 8px;
   padding: 1.5em;
+  height: 60px;
+}
+
+.formulario-cobranca input:hover {
+  border: 2px solid black;
+}
+
+.formulario-cobranca input:focus {
+  outline: 0;
+  border: 2px solid rgb(69, 69, 245);
+}
+
+.formulario-cobranca .select {
+  margin-top: 1em;
+  padding: 0;
+}
+
+.descricao-input {
+  height: 80px !important;
+}
+.select button {
+  box-shadow: none !important;
+}
+
+.select input {
+  border: none !important;
+}
+
+.select > div {
+  border: 1px solid #374952;
+  border-radius: 8px;
+}
+
+.PrivateNotchedOutline-root-1:focus {
+  border: 1px solid black;
+}
+
+.formulario-cobranca .valor {
+  max-width: calc(300px + 1vw);
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.formulario-cobranca .vencimento {
+  width: 100%;
+}
+
+.form-botoes {
+  display: flex;
+  justify-content: center;
+}
+
+.form-botoes button {
+  width: 100%;
+  flex: 0 1 300px !important;
+  max-width: 250px;
+  margin-right: 2em;
+  padding: 1em;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-botoes button:nth-child(1) {
+  border: 1.5px solid #da0175;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #da0175;
+}
+
+.completo {
+  background: #da0175;
+}
+
+.descricao-select {
+  margin-top: 5px;
+  font-size: calc(10px + 0.4vw);
+  font-weight: normal;
+  color: #868686;
 }
 
 @media (max-width: 1347px) {
+  .formulario-cobranca label,
+  .inputs,
+  .form-botoes {
+    flex-wrap: wrap;
+  }
+
+  .valor,
+  .vencimento {
+    max-width: 100% !important;
+  }
+
   .barra-lateral > button {
     width: 70%;
   }
@@ -363,6 +462,24 @@
 }
 
 @media (max-width: 1000px) {
+  .usuario {
+    margin-top: 5em !important;
+    margin-left: 2em;
+  }
+
+  .formulario-cobranca {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    background: #ffffff;
+  }
+
+  .formulario-cobranca form {
+    padding: 0;
+    display: flex;
+    flex: 0 1 80%;
+  }
+
   .barra-lateral {
     display: none;
   }
@@ -380,5 +497,22 @@
   .divConteudo {
     margin-top: 2em;
     padding: 0 2em;
+  }
+}
+
+@media (max-width: 460px) {
+  .header-content {
+    margin: 0;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(8px + 1vw);
+  }
+
+  .usuario {
+    margin-top: 2em !important;
+    margin-left: 0;
+    align-self: center;
   }
 }
