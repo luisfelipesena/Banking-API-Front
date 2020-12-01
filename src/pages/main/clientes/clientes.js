@@ -5,6 +5,7 @@ import logo_cubos_white from "../../../assets/logo_cubos_white.svg";
 import home from "../../../assets/home.svg";
 import cobrancas from "../../../assets/cobrancas.svg";
 import clientes from "../../../assets/clientes.svg";
+import { ClientesComponent } from "../../../components/clientes/index";
 
 export const Clientes = () => {
   const token = localStorage.getItem("token");
@@ -52,7 +53,7 @@ export const Clientes = () => {
             </ul>
             <button>Criar cobrança</button>
           </div>
-          {/* Cobranças */}
+          <ClientesComponent />
         </div>
       ) : (
         (window.location.href = "/")

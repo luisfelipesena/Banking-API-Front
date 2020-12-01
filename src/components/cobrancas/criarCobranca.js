@@ -11,7 +11,7 @@ export const CriarCobranca = async (
     "https://cubos-banking-api.herokuapp.com/cobrancas",
     "POST",
     {
-      idDoCliente: Number(idDoCliente),
+      idDoCliente: idDoCliente,
       descricao,
       valor: valor * 100,
       vencimento,

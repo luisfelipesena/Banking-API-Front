@@ -422,7 +422,154 @@ input[type="number"] {
   color: #868686;
 }
 
+.bellow-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.bellow-header > button {
+  border: 1.5px solid #da0175;
+  box-sizing: border-box;
+  border-radius: 20px;
+  padding: 1.5em 5em;
+  color: #da0175;
+  font-weight: 600;
+  font-size: calc(11px + 0.1vw);
+  cursor: pointer;
+}
+
+.input-procurar {
+  display: flex;
+  flex: 0 1 500px;
+  position: relative;
+  margin-top: 0 !important;
+}
+
+.input-procurar input {
+  border: 1px solid #374952;
+  height: 50px;
+  width: 100%;
+  color: #868686;
+  font-size: calc(10px + 0.2vw);
+  background: #f7f7f7;
+  padding: 1em;
+  border-radius: 8px;
+}
+
+.com-conteudo {
+  color: #4c4c4c;
+}
+
+.input-procurar button {
+  position: absolute;
+  height: 50px;
+  background: #374952;
+  border-radius: 8px;
+  border: 1px solid #374952;
+  right: 0;
+  width: 130px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 0 !important;
+}
+
+.input-procurar button:hover {
+  box-shadow: none;
+}
+
+.input-procurar button span {
+  position: absolute;
+  left: 2.7em;
+  bottom: 0.9em;
+}
+
+.input-procurar button img {
+  position: absolute;
+  left: 0.7em;
+  bottom: 0.9em;
+  height: 1.3em;
+}
+
+.tabela-clientes table {
+  width: 100%;
+  margin-top: 50px;
+  border-spacing: 0px 25px;
+}
+
+thead {
+  background: #9dbbc3;
+}
+
+thead tr th {
+  text-align: left;
+  padding: 0.7em 0em 0.5em 2em;
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+}
+
+tbody tr {
+  background: #ffffff;
+}
+
+tbody tr td:nth-child(1) {
+  max-width: 200px;
+}
+
+tbody tr td {
+  padding: 2em;
+}
+
+.nome-email-cliente {
+  max-width: 80%;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  color: #4c4c4c;
+  margin-bottom: 1em;
+}
+
+.descricoes-cliente {
+  display: flex;
+  align-items: center;
+}
+
+.descricoes-cliente span {
+  margin-left: 1em;
+}
+
+.em-dia {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 15px;
+  text-transform: uppercase;
+  color: #4ec06e;
+}
+
+td button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+td button img {
+  height: 30px;
+}
+
+.editar-cliente {
+  max-width: 70%;
+}
+
 @media (max-width: 1347px) {
+  .barra-lateral {
+    display: none;
+  }
+
   .formulario-cobranca label,
   .inputs,
   .form-botoes {
@@ -480,8 +627,12 @@ input[type="number"] {
     flex: 0 1 80%;
   }
 
-  .barra-lateral {
-    display: none;
+  thead tr th {
+    padding: 0;
+  }
+
+  tbody tr td {
+    padding: 0.5em 0;
   }
 
   .temporalidades {
@@ -514,5 +665,9 @@ input[type="number"] {
     margin-top: 2em !important;
     margin-left: 0;
     align-self: center;
+  }
+
+  .divConteudo {
+    padding: 0.2em;
   }
 }

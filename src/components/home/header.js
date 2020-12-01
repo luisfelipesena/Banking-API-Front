@@ -3,10 +3,19 @@ import cifrao from "../../assets/cifrao.svg";
 import user from "../../assets/perfil.svg";
 import logout from "../../assets/logout.svg";
 import { UseMediaQuery } from "../../utils/mediaQuery";
+import { SaldoUser } from "../../utils/obterSaldoUser";
 
 export const Header = () => {
   const width = UseMediaQuery("(max-width: 700px)");
   const [deslogar, setDeslogar] = React.useState(false);
+  const [saldo, setSaldo] = React.useState("");
+
+  React.useEffect(() => {
+    SaldoUser().then((s) => {
+      const saldoFormatado = `${s / 100}`;
+      setSaldo(saldoFormatado);
+    });
+  }, []);
 
   return (
     <div className="header">
@@ -16,7 +25,7 @@ export const Header = () => {
             <img src={cifrao} alt="cifrao" />
             <span>Saldo em conta</span>
           </div>
-          <h2>R$ 0,00</h2>
+          <h2>{`R$ ${saldo}`}</h2>
         </div>
         <div className="usuario">
           {!width && (

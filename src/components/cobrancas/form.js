@@ -26,14 +26,16 @@ export const Form = () => {
       <form
         onSubmit={handleSubmit(async (dados) => {
           const cobranca = await CriarCobranca(
-            cliente.id,
+            Number(cliente.id),
             dados.descricao,
-            dados.valor,
-            dados.vencimento
+            Number(dados.valor),
+            dados.vencimento.split("-").reverse().join("/"),
+            token
           );
           if (cobranca) {
             alert("Cobrança realizada com Sucesso !!");
             window.location.href = "/home";
+            return;
           }
           alert("Cobrança não realizada, logue novamente");
         })}
@@ -44,9 +46,19 @@ export const Form = () => {
             className="select"
             id="clientes"
             options={clientes}
-            onSelect={(ev) => setCliente(ev.target.value)}
+            onSelect={(ev) => {
+              const [id] = ev.target.value.split("-");
+              setCliente(
+                clientes.find((c) => {
+                  if (Number(c.id) === Number(id)) {
+                    return true;
+                  }
+                  return false;
+                })
+              );
+            }}
             getOptionLabel={(option) => {
-              return option.nome;
+              return `${option.id} - ${option.nome}`;
             }}
             style={{ width: "99.5%" }}
             renderInput={(params) => (
