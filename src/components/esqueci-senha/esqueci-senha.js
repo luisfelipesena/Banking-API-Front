@@ -3,7 +3,7 @@ import { UseFetch } from "../../utils/fetch";
 export function useSenha() {
   async function esqueciSenha(email) {
     const request = await UseFetch(
-      `https://cubos-banking-api.herokuapp.com/usuarios/resetPassword`,
+      `https://cubos-banking-api.herokuapp.com/usuarios/resetPasswordEmail`,
       "POST",
       {
         email,
