@@ -5,11 +5,11 @@ import logo_cubos_white from "../../../assets/logo_cubos_white.svg";
 import home from "../../../assets/home.svg";
 import cobrancas from "../../../assets/cobrancas.svg";
 import clientes from "../../../assets/clientes.svg";
-import { Main } from "../../../components/home/index";
+import { PageCriarCobranca } from "../../../components/cobrancas/criarCobrancaComponent";
 import { UseMediaQuery } from "../../../utils/mediaQuery";
 import hamburger from "../../../assets/hamburger-menu.svg";
 
-export const Home = () => {
+export const CobrancasCriar = () => {
   const media = UseMediaQuery("(max-width: 1200px)");
   const [menu, setMenu] = React.useState(false);
   const [troca, setTroca] = React.useState(!media);
@@ -133,7 +133,7 @@ export const Home = () => {
               )}
             </>
           )}
-          <Main />
+          <PageCriarCobranca />
         </div>
       ) : (
         (window.location.href = "/")

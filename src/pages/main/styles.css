@@ -14,7 +14,7 @@
   background-color: #263238;
   display: flex;
   flex-flow: column;
-  width: 100%;
+  width: calc(200px + 5vw);
   max-width: 300px;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .barra-lateral ul {
-  margin-bottom: 340px;
+  margin-bottom: 60%;
 }
 
 .barra-lateral .link {
@@ -426,7 +426,6 @@ input[type="number"] {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
 }
 
@@ -515,6 +514,7 @@ thead tr th {
 
 tbody tr {
   background: #ffffff;
+  height: 160px;
 }
 
 tbody tr td:nth-child(1) {
@@ -551,8 +551,16 @@ tbody tr td {
   color: #4ec06e;
 }
 
+.inadimplente {
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #ff4d4d;
+}
+
 td button {
   border: 0;
+  outline: 0;
   background-color: transparent;
   cursor: pointer;
 }
@@ -562,14 +570,21 @@ td button img {
 }
 
 .editar-cliente {
-  max-width: 70%;
+  max-width: 90%;
+  margin-left: 1em;
+}
+
+@media (max-width: 800px) {
+  .bellow-header {
+    justify-content: center;
+  }
+
+  .bellow-header button {
+    margin-bottom: 2em;
+  }
 }
 
 @media (max-width: 1347px) {
-  .barra-lateral {
-    display: none;
-  }
-
   .formulario-cobranca label,
   .inputs,
   .form-botoes {
@@ -608,6 +623,14 @@ td button img {
   }
 }
 
+.divHamburguer button {
+  position: absolute;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
 @media (max-width: 1000px) {
   .usuario {
     margin-top: 5em !important;
@@ -628,11 +651,13 @@ td button img {
   }
 
   thead tr th {
-    padding: 0;
+    padding: 0.5em;
+    padding-right: 1em;
+    height: 2em;
   }
 
   tbody tr td {
-    padding: 0.5em 0;
+    padding: 0.5em 0.5em;
   }
 
   .temporalidades {
@@ -645,29 +670,43 @@ td button img {
     min-width: 90vw;
   }
 
+  .header-faturamento,
+  .header-faturamento img {
+    justify-content: center;
+    margin-left: 0;
+  }
+
   .divConteudo {
     margin-top: 2em;
     padding: 0 2em;
   }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 430px) {
   .header-content {
     margin: 0;
     flex-direction: column;
     flex-wrap: wrap-reverse;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     font-size: calc(8px + 1vw);
   }
 
   .usuario {
-    margin-top: 2em !important;
+    margin-top: 0em !important;
     margin-left: 0;
     align-self: center;
   }
 
+  .header-content {
+    align-items: center;
+  }
+
   .divConteudo {
     padding: 0.2em;
+  }
+
+  .divSaldo {
+    padding: 0.5em;
   }
 }

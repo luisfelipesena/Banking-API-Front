@@ -6,7 +6,7 @@ import { UseMediaQuery } from "../../utils/mediaQuery";
 import { SaldoUser } from "../../utils/obterSaldoUser";
 
 export const Header = () => {
-  const width = UseMediaQuery("(max-width: 700px)");
+  const isPhone = UseMediaQuery("(max-width: 700px)");
   const [deslogar, setDeslogar] = React.useState(false);
   const [saldo, setSaldo] = React.useState("");
 
@@ -28,12 +28,12 @@ export const Header = () => {
           <h2>{`R$ ${saldo}`}</h2>
         </div>
         <div className="usuario">
-          {!width && (
+          {!isPhone && (
             <button onClick={() => setDeslogar(deslogar ? false : true)}>
               <img src={user} alt="usuário" />
             </button>
           )}
-          {(deslogar || width) && (
+          {(deslogar || isPhone) && (
             <button
               onClick={() => {
                 localStorage.setItem("token", null);
