@@ -1,7 +1,7 @@
 import { UseFetch } from "../../utils/fetch";
 
 export const TrocarSenha = async (senha, id) => {
-  const response = await UseFetch(
+  const request = await UseFetch(
     "https://cubos-banking-api.herokuapp.com/resetPassword",
     "PUT",
     {
@@ -9,6 +9,7 @@ export const TrocarSenha = async (senha, id) => {
       userId: id,
     }
   );
+  const response = await request.json();
   if (response.dados && response.dados.result) {
     return true;
   } else {

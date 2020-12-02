@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useSenha } from "./esqueci-senha";
+import emailImg from "../../assets/email.svg";
 import React from "react";
 
 export const Form = () => {
@@ -58,7 +59,7 @@ export const Form = () => {
       ) : (
         <div className="confirirEmail">
           <div>
-            <img src="../../../assets/email.svg" alt="email" />
+            <img src={emailImg} alt="email" />
             <h2>Confira seu e-mail</h2>
             <div>
               <p>Enviamos as instruções para</p>

@@ -190,6 +190,14 @@ form button:hover {
   font-style: normal;
   font-weight: 600;
   font-size: calc(12px + 0.1vw);
+  padding: 1em 3em;
+  border: 1.5px solid #da0175;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.entendi:hover {
+  box-shadow: 0px 0px 32px rgba(218, 1, 117, 0.35);
 }
 
 @media (max-width: 500px) {
