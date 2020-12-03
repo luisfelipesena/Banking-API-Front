@@ -3,18 +3,42 @@ import lupa from "../../assets/lupa.svg";
 import gmail from "../../assets/gmail.svg";
 import telefone from "../../assets/telefone.svg";
 import editar from "../../assets/editar-cliente.svg";
+import { useForm } from "react-hook-form";
 import { UseMediaQuery } from "../../utils/mediaQuery";
+import { getClients, getClientsSearch } from "./getClients";
 
-export const Content = () => {
+export const Content = (props) => {
+  const { watch, register } = useForm();
+  const { offset } = props;
+  const token = localStorage.getItem("token");
   const isPhone = UseMediaQuery("(max-width: 700px)");
   const [inputClicado, setInput] = React.useState({ id: null, valor: false });
+  const [clientes, setClientes] = React.useState(null);
+  const [clientesProcurados, setClientesProcurados] = React.useState(null);
+
+  const procura = watch("procura");
+
+  React.useEffect(() => {
+    if (procura && procura !== "") {
+      getClientsSearch(token, offset, procura).then((r) => {
+        setClientesProcurados(r);
+      });
+    } else {
+      setClientesProcurados(null);
+      getClients(token, offset).then((r) => {
+        setClientes(r);
+      });
+    }
+  }, [token, offset, procura]);
 
   return (
     <div className="divConteudo">
       <div className="bellow-header">
         <button>Adicionar cliente</button>
-        <form className="input-procurar">
+        <form className="input-procurar" onSubmit={(ev) => ev.preventDefault()}>
           <input
+            ref={register}
+            name="procura"
             placeholder={
               UseMediaQuery("(min-width: 450px)")
                 ? "Procurar por Nome, E-mail ou CPF"
@@ -40,49 +64,79 @@ export const Content = () => {
           </thead>
 
           <tbody>
-            <tr>
-              <td>
-                <h2 className="nome-email-cliente">
-                  {!inputClicado.valor && !inputClicado.id !== "x" ? (
-                    <span>Nome completo o meu</span>
-                  ) : (
-                    <input className="editar-cliente" />
-                  )}
-                </h2>
-                <div className="descricoes-cliente">
-                  <img src={gmail} alt="email" />
-                  {!inputClicado.valor && !inputClicado.id !== "x" ? (
-                    <span>email</span>
-                  ) : (
-                    <input className="editar-cliente" />
-                  )}
-                </div>
-                <div className="descricoes-cliente">
-                  <img src={telefone} alt="telefone" />
-                  {!inputClicado.valor && !inputClicado.id !== "x" ? (
-                    <span>telefone</span>
-                  ) : (
-                    <input className="editar-cliente" />
-                  )}
-                </div>
-              </td>
-              <td>R$ 0.000,00</td>
-              <td>R$ 0.000,00</td>
-              {!isPhone && <td className={"em-dia"}>em dia</td>}
+            {(clientesProcurados || clientes) &&
+              (clientesProcurados || clientes).map((c) => {
+                return (
+                  <tr key={c.id}>
+                    <td>
+                      {!inputClicado.valor && !inputClicado.id !== "x" ? (
+                        <h2 className="nome-email-cliente">
+                          <span>{c.nome}</span>
+                        </h2>
+                      ) : (
+                        <>
+                          <span>
+                            <input
+                              placeholder="Nome do Cliente"
+                              className="editar-cliente"
+                            />
+                          </span>
+                        </>
+                      )}
+                      <div className="descricoes-cliente">
+                        {!inputClicado.valor && !inputClicado.id !== "x" ? (
+                          <>
+                            <img src={gmail} alt="email" />
+                            <span>{c.email}</span>
+                          </>
+                        ) : (
+                          <input
+                            placeholder="Email"
+                            className="editar-cliente"
+                          />
+                        )}
+                      </div>
+                      <div className="descricoes-cliente">
+                        {!inputClicado.valor && !inputClicado.id !== "x" ? (
+                          <>
+                            <img src={telefone} alt="telefone" />
+                            <span>{c.tel}</span>
+                          </>
+                        ) : (
+                          <input
+                            placeholder="Telefone"
+                            className="editar-cliente"
+                          />
+                        )}
+                      </div>
+                    </td>
+                    <td>R$ {c.cobrancasFeitas}</td>
+                    <td>R$ {c.cobrancasRecebidas}</td>
+                    {!isPhone && (
+                      <td
+                        className={
+                          c.estaInadimplente ? "inadimplente" : "em-dia"
+                        }
+                      >
+                        {c.estaInadimplente ? "inadimplente" : "em dia"}
+                      </td>
+                    )}
 
-              <td>
-                <button
-                  onClick={() =>
-                    setInput({
-                      id: "x",
-                      valor: inputClicado.valor ? false : true,
-                    })
-                  }
-                >
-                  <img alt="editar cliente" src={editar} />
-                </button>
-              </td>
-            </tr>
+                    <td>
+                      <button
+                        onClick={() =>
+                          setInput({
+                            id: "x",
+                            valor: inputClicado.valor ? false : true,
+                          })
+                        }
+                      >
+                        <img alt="editar cliente" src={editar} />
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>

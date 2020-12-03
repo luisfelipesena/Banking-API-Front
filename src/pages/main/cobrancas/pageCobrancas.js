@@ -95,7 +95,6 @@ export const Cobrancas = () => {
                     className="logo-cubos"
                     alt="logo cubos"
                     src={logo_cubos_white}
-                    style={{ marginTop: "3em" }}
                   />
                   <ul>
                     <Link
@@ -132,7 +131,11 @@ export const Cobrancas = () => {
                       <span className="descricao">Clientes</span>
                     </Link>
                   </ul>
-                  <button>Criar cobrança</button>
+                  <button
+                    onClick={() => (window.location.href = "/criar-cobranca")}
+                  >
+                    Criar cobrança
+                  </button>
                 </div>
               )}
             </>

@@ -7,7 +7,7 @@
 
 .barra-lateral {
   height: 100vh;
-  position: sticky;
+  position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
@@ -16,6 +16,7 @@
   flex-flow: column;
   width: calc(200px + 5vw);
   max-width: 300px;
+  z-index: 10;
 }
 
 .logo-cubos {
@@ -80,7 +81,6 @@
 .cobrancas-header {
   display: flex;
   justify-content: center;
-
   height: 200px;
   width: 100%;
 }
@@ -543,19 +543,27 @@ tbody tr td {
   margin-left: 1em;
 }
 
-.em-dia {
+.em-dia,
+.pago {
   font-weight: 600;
   font-size: 16px;
-  line-height: 15px;
   text-transform: uppercase;
   color: #4ec06e;
 }
 
-.inadimplente {
+.inadimplente,
+.vencido {
   font-weight: 600;
   font-size: 16px;
   text-transform: uppercase;
   color: #ff4d4d;
+}
+
+.pendente {
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #5197b5;
 }
 
 td button {
@@ -571,7 +579,52 @@ td button img {
 
 .editar-cliente {
   max-width: 90%;
+  height: 30px;
   margin-left: 1em;
+}
+
+.clientes-pages,
+.cobrancas-page {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 5em;
+}
+
+.clientes-pages ul,
+.cobrancas-page ul {
+  width: 100%;
+  flex: 0 1 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clientes-pages li,
+.cobrancas-page li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(13px + 0.2vw);
+  cursor: pointer;
+}
+
+.clientes-pages button,
+.cobrancas-page button {
+  font-size: 17px;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: #667e87;
+  border-bottom: 1px solid transparent;
+}
+
+.botao-clicado {
+  border-bottom: 1px solid #374952;
+}
+
+.seta {
+  margin-top: 0.3em;
 }
 
 @media (max-width: 800px) {
@@ -589,6 +642,11 @@ td button img {
   .inputs,
   .form-botoes {
     flex-wrap: wrap;
+  }
+
+  .clientes-pages,
+  .cobrancas-page {
+    padding: 0 1em;
   }
 
   .valor,
@@ -623,18 +681,32 @@ td button img {
   }
 }
 
+.divHamburguer {
+  position: fixed;
+  top: 0;
+}
+
 .divHamburguer button {
-  position: absolute;
   background-color: transparent;
   border: 0;
   outline: 0;
   cursor: pointer;
 }
 
+.divHamburguer img {
+  height: 3em;
+}
+
 @media (max-width: 1000px) {
   .usuario {
     margin-top: 5em !important;
     margin-left: 2em;
+  }
+
+  .clientes-pages,
+  .cobrancas-page {
+    justify-content: center;
+    margin: 0;
   }
 
   .formulario-cobranca {
