@@ -15,7 +15,7 @@ export const ClientesComponent = () => {
       {token ? (
         <div className="conteudo">
           <Header />
-          <Content offset={paginaClicada} />
+          <Content offset={(paginaClicada - 1) * 10} />
           <div className="clientes-pages">
             <ul>
               <li>

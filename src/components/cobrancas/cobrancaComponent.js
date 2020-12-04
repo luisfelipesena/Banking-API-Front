@@ -15,7 +15,7 @@ export const PageCobranca = () => {
       {token ? (
         <div className="conteudo">
           <Header />
-          <Cobrancas offset={paginaClicada} />
+          <Cobrancas offset={(paginaClicada - 1) * 10} />
           <div className="clientes-pages">
             <ul>
               <li>

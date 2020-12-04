@@ -23,7 +23,7 @@ export const Cobrancas = () => {
           style={media && troca ? { display: "block" } : { display: "flex" }}
         >
           {!media ? (
-            <div className="barra-lateral">
+            <div className="barra-lateral" style={{ position: "sticky" }}>
               <img
                 className="logo-cubos"
                 alt="logo cubos"
@@ -80,63 +80,76 @@ export const Cobrancas = () => {
                   </button>
                 </div>
               ) : (
-                <div className="barra-lateral">
-                  <div className="divHamburguer">
+                <>
+                  <div className="barra-lateral">
+                    <div className="divHamburguer">
+                      <button
+                        onClick={() => {
+                          setMenu(!menu);
+                          setTroca(true);
+                        }}
+                      >
+                        <img alt="menu-hamburguer" src={hamburger} />
+                      </button>
+                    </div>
+                    <img
+                      className="logo-cubos"
+                      alt="logo cubos"
+                      src={logo_cubos_white}
+                    />
+                    <ul>
+                      <Link
+                        to="/home"
+                        className={url === "home" ? "li-clicado link" : "link"}
+                      >
+                        <div className="divImagens">
+                          <img alt="home" src={home} />
+                        </div>
+                        <span className="descricao">Home</span>
+                      </Link>
+
+                      <Link
+                        to="/cobrancas"
+                        className={
+                          url === "cobrancas" ? "li-clicado link" : "link"
+                        }
+                      >
+                        <div className="divImagens">
+                          <img alt="cobrancas" src={cobrancas} />
+                        </div>
+                        <span className="descricao">Cobrancas </span>
+                      </Link>
+
+                      <Link
+                        to="/clientes"
+                        className={
+                          url === "clientes" ? "li-clicado link" : "link"
+                        }
+                      >
+                        <div className="divImagens">
+                          <img alt="clientes" src={clientes} />
+                        </div>
+                        <span className="descricao">Clientes</span>
+                      </Link>
+                    </ul>
                     <button
-                      onClick={() => {
-                        setMenu(!menu);
-                        setTroca(true);
-                      }}
+                      onClick={() => (window.location.href = "/criar-cobranca")}
                     >
-                      <img alt="menu-hamburguer" src={hamburger} />
+                      Criar cobrança
                     </button>
                   </div>
-                  <img
-                    className="logo-cubos"
-                    alt="logo cubos"
-                    src={logo_cubos_white}
+                  <div
+                    style={{
+                      position: "fixed",
+                      top: 0,
+                      bottom: 0,
+                      right: 0,
+                      minWidth: "100vw",
+                      background: "rgba(0, 0, 0, 0.6)",
+                      backdropFilter: "blur(2px)",
+                    }}
                   />
-                  <ul>
-                    <Link
-                      to="/home"
-                      className={url === "home" ? "li-clicado link" : "link"}
-                    >
-                      <div className="divImagens">
-                        <img alt="home" src={home} />
-                      </div>
-                      <span className="descricao">Home</span>
-                    </Link>
-
-                    <Link
-                      to="/cobrancas"
-                      className={
-                        url === "cobrancas" ? "li-clicado link" : "link"
-                      }
-                    >
-                      <div className="divImagens">
-                        <img alt="cobrancas" src={cobrancas} />
-                      </div>
-                      <span className="descricao">Cobrancas </span>
-                    </Link>
-
-                    <Link
-                      to="/clientes"
-                      className={
-                        url === "clientes" ? "li-clicado link" : "link"
-                      }
-                    >
-                      <div className="divImagens">
-                        <img alt="clientes" src={clientes} />
-                      </div>
-                      <span className="descricao">Clientes</span>
-                    </Link>
-                  </ul>
-                  <button
-                    onClick={() => (window.location.href = "/criar-cobranca")}
-                  >
-                    Criar cobrança
-                  </button>
-                </div>
+                </>
               )}
             </>
           )}

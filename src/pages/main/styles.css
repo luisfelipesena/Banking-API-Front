@@ -311,7 +311,7 @@
 .formulario-cobranca {
   display: flex;
   justify-content: center;
-  margin: 0 5em;
+  margin: 0 5em 5em 5em;
   background: #ffffff;
 }
 
@@ -372,7 +372,12 @@
   border: 1px solid black;
 }
 
-.formulario-cobranca .valor {
+.formulario-cobranca .valor,
+.nome,
+.email,
+.tel,
+.cpf,
+.email {
   max-width: calc(300px + 1vw);
 }
 
@@ -445,6 +450,7 @@ input[type="number"] {
   flex: 0 1 500px;
   position: relative;
   margin-top: 0 !important;
+  z-index: -5;
 }
 
 .input-procurar input {
@@ -559,7 +565,7 @@ tbody tr td {
   color: #ff4d4d;
 }
 
-.pendente {
+.aguardando {
   font-weight: 600;
   font-size: 16px;
   text-transform: uppercase;
@@ -650,7 +656,11 @@ td button img {
   }
 
   .valor,
-  .vencimento {
+  .vencimento,
+  .nome,
+  .email,
+  .tel,
+  .cpf {
     max-width: 100% !important;
   }
 

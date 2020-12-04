@@ -21,7 +21,6 @@ export const CriarCobranca = async (
 
   if (request) {
     const cobranca = await request.json();
-    console.log(cobranca);
     if (cobranca.dados?.cobranca) {
       return true;
     }

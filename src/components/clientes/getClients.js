@@ -24,7 +24,6 @@ export const getClientsSearch = async (token, off, busca) => {
   );
   const response = await request.json();
   if (response.dados && response.dados.clientes) {
-    console.log(response.dados.clientes);
     return response.dados.clientes;
   } else {
     return false;

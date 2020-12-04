@@ -28,14 +28,10 @@ export const Cobrancas = (props) => {
     }
   }, [token, offset, procura]);
 
-  React.useEffect(() => {
-    getCobrancas(token, offset).then((r) => setCobrancas(r));
-  }, [offset, token, procura]);
-
   return (
     <div className="divConteudo">
       <div className="bellow-header" style={{ justifyContent: "flex-end" }}>
-        <form className="input-procurar">
+        <form className="input-procurar" onSubmit={(ev) => ev.preventDefault()}>
           <input
             ref={register}
             name="procura"
@@ -82,20 +78,24 @@ export const Cobrancas = (props) => {
                         className={
                           c.status === "pago"
                             ? "pago"
-                            : c.status === "pendente"
-                            ? "pendente"
+                            : c.status === "aguardando"
+                            ? "aguardando"
                             : "vencido"
                         }
                       >
                         {c.status === "pago" ? (
-                          <div>
+                          <div
+                            style={{ display: "flex", alignItems: "center" }}
+                          >
                             <img alt="pago" src={statusPago} />
                             <span>pago</span>
                           </div>
-                        ) : c.status === "pendente" ? (
-                          <div>
-                            <img alt="pendente" src={statusPendente} />
-                            <span>pendente</span>
+                        ) : c.status === "aguardando" ? (
+                          <div
+                            style={{ display: "flex", alignItems: "center" }}
+                          >
+                            <img alt="aguardando" src={statusPendente} />
+                            <span>aguardando</span>
                           </div>
                         ) : (
                           "vencido"

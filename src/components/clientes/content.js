@@ -34,7 +34,9 @@ export const Content = (props) => {
   return (
     <div className="divConteudo">
       <div className="bellow-header">
-        <button>Adicionar cliente</button>
+        <button onClick={() => (window.location.href = "/adicionar-cliente")}>
+          Adicionar cliente
+        </button>
         <form className="input-procurar" onSubmit={(ev) => ev.preventDefault()}>
           <input
             ref={register}
@@ -69,7 +71,7 @@ export const Content = (props) => {
                 return (
                   <tr key={c.id}>
                     <td>
-                      {!inputClicado.valor && !inputClicado.id !== "x" ? (
+                      {!inputClicado.valor && inputClicado.id !== c.id ? (
                         <h2 className="nome-email-cliente">
                           <span>{c.nome}</span>
                         </h2>
@@ -84,7 +86,7 @@ export const Content = (props) => {
                         </>
                       )}
                       <div className="descricoes-cliente">
-                        {!inputClicado.valor && !inputClicado.id !== "x" ? (
+                        {!inputClicado.valor && inputClicado.id !== c.id ? (
                           <>
                             <img src={gmail} alt="email" />
                             <span>{c.email}</span>
@@ -97,7 +99,7 @@ export const Content = (props) => {
                         )}
                       </div>
                       <div className="descricoes-cliente">
-                        {!inputClicado.valor && !inputClicado.id !== "x" ? (
+                        {!inputClicado.valor && inputClicado.id !== c.id ? (
                           <>
                             <img src={telefone} alt="telefone" />
                             <span>{c.tel}</span>
@@ -124,12 +126,12 @@ export const Content = (props) => {
 
                     <td>
                       <button
-                        onClick={() =>
+                        onClick={(i) => {
                           setInput({
-                            id: "x",
-                            valor: inputClicado.valor ? false : true,
-                          })
-                        }
+                            id: c.id,
+                            valor: !inputClicado.valor ? true : false,
+                          });
+                        }}
                       >
                         <img alt="editar cliente" src={editar} />
                       </button>

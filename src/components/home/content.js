@@ -2,16 +2,41 @@ import React from "react";
 import clientes from "../../assets/clientes.svg";
 import cobrancas from "../../assets/cobrancas.svg";
 import faturamento from "../../assets/faturamento.svg";
+import { Relatorio } from "./getRelatorios";
+import { Token } from "./index";
+import { UseMediaQuery } from "../../utils/mediaQuery";
 
 export const Content = () => {
-  const [temporalidadeGeral, setTemporalidadeGeral] = React.useState("mes");
-  const [
-    temporalidadeFaturamento,
-    setTemporalidadeFaturamento,
-  ] = React.useState("mes");
+  const isPhone = UseMediaQuery("(max-width:500px)");
+  const token = Token.useContainer();
+  const [temporalidadeGeral, setTemporalidadeGeral] = React.useState("dia");
+  const [relatorio, setRelatorio] = React.useState(null);
+
+  React.useEffect(() => {
+    setRelatorio(null);
+    Relatorio(token, temporalidadeGeral).then((r) => {
+      setRelatorio(r);
+    });
+  }, [token, temporalidadeGeral]);
+
   return (
     <div className="divConteudo">
-      <div className="temporalidades">
+      <div
+        className="temporalidades"
+        style={
+          isPhone
+            ? { flexFlow: "column wrap", alignItems: "center" }
+            : { border: 0 }
+        }
+      >
+        <button
+          onClick={() => setTemporalidadeGeral("dia")}
+          className={
+            temporalidadeGeral === "dia" ? "temporalidade-escolhida" : ""
+          }
+        >
+          <span>Este dia</span>
+        </button>
         <button
           onClick={() => setTemporalidadeGeral("mes")}
           className={
@@ -47,11 +72,11 @@ export const Content = () => {
           <div className="relatorio-clientes">
             <div className="verde">
               <span>Em dia</span>
-              <h2>0</h2>
+              <h2>{relatorio ? relatorio.qtdClientesAdimplentes : "..."}</h2>
             </div>
             <div className="vermelho">
               <span>Inadimplentes</span>
-              <h2>0</h2>
+              <h2>{relatorio ? relatorio.qtdClientesAdimplentes : "..."}</h2>
             </div>
           </div>
         </div>
@@ -64,15 +89,15 @@ export const Content = () => {
           <div className="relatorio-cobrancas">
             <div className="azul">
               <span>Previstas</span>
-              <h2>0</h2>
+              <h2>{relatorio ? relatorio.qtdCobrancasPrevistas : "..."}</h2>
             </div>
             <div className="vermelho">
               <span>Vencidas</span>
-              <h2>0</h2>
+              <h2>{relatorio ? relatorio.qtdCobrancasVencidas : "..."}</h2>
             </div>
             <div className="verde">
               <span>Pagas </span>
-              <h2>0</h2>
+              <h2>{relatorio ? relatorio.qtdCobrancasPagas : "..."}</h2>
             </div>
           </div>
         </div>
@@ -84,30 +109,8 @@ export const Content = () => {
           </div>
 
           <div className="faturamento-content">
-            <div className="temporalidades">
-              <button
-                onClick={() => setTemporalidadeFaturamento("mes")}
-                className={
-                  temporalidadeFaturamento === "mes"
-                    ? "temporalidade-escolhida"
-                    : ""
-                }
-              >
-                <span>Por mês</span>
-              </button>
-              <button
-                onClick={() => setTemporalidadeFaturamento("dia")}
-                className={
-                  temporalidadeFaturamento === "dia"
-                    ? "temporalidade-escolhida"
-                    : ""
-                }
-              >
-                <span>Por dia </span>
-              </button>
-            </div>
-
-            {/* Gráfico */}
+            <h2>Em andamento</h2>
+            {relatorio && relatorio.saldoEmConta}
           </div>
         </div>
       </div>
