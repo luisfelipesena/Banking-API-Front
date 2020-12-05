@@ -6,13 +6,14 @@ import { UseMediaQuery } from "../../utils/mediaQuery";
 import { SaldoUser } from "../../utils/obterSaldoUser";
 
 export const Header = () => {
+  const media = UseMediaQuery("(max-width: 1200px)");
   const isPhone = UseMediaQuery("(max-width: 700px)");
   const [deslogar, setDeslogar] = React.useState(false);
   const [saldo, setSaldo] = React.useState("");
 
   React.useEffect(() => {
     SaldoUser().then((s) => {
-      const saldoFormatado = Number(s).toLocaleString("pt-BR");
+      const saldoFormatado = Number(s / 100).toLocaleString("pt-BR");
       setSaldo(saldoFormatado);
     });
   }, []);
@@ -27,25 +28,27 @@ export const Header = () => {
           </div>
           <h2>{`R$ ${saldo}`}</h2>
         </div>
-        <div className="usuario">
-          {!isPhone && (
-            <button onClick={() => setDeslogar(deslogar ? false : true)}>
-              <img src={user} alt="usuário" />
-            </button>
-          )}
-          {(deslogar || isPhone) && (
-            <button
-              onClick={() => {
-                localStorage.setItem("token", null);
-                window.location.href = "/";
-              }}
-              className="logout"
-            >
-              <img src={logout} alt="logout" />
-              <span>Deslogar</span>
-            </button>
-          )}
-        </div>
+        {!media && (
+          <div className="usuario">
+            {!isPhone && (
+              <button onClick={() => setDeslogar(deslogar ? false : true)}>
+                <img src={user} alt="usuário" />
+              </button>
+            )}
+            {(deslogar || isPhone) && (
+              <button
+                onClick={() => {
+                  localStorage.setItem("token", null);
+                  window.location.href = "/";
+                }}
+                className="logout"
+              >
+                <img src={logout} alt="logout" />
+                <span>Deslogar</span>
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ export const Cobrancas = (props) => {
   const { watch, register } = useForm();
   const token = localStorage.getItem("token");
   const { offset } = props;
-  const isPhone = UseMediaQuery("(max-width: 600px)");
+  const isPhone = UseMediaQuery("(max-width: 800px)");
   const [cobrancas, setCobrancas] = React.useState(null);
   const [cobrancasProcuradas, setCobrancasProcuradas] = React.useState(null);
   const [pay, setPay] = React.useState(null);
@@ -76,7 +76,7 @@ export const Cobrancas = (props) => {
                       </h2>
                     </td>
                     {!isPhone && <td>{c.descricao}</td>}
-                    <td>R$ {Number(c.valor).toLocaleString("pt-BR")}</td>
+                    <td>R$ {Number(c.valor / 100).toLocaleString("pt-BR")}</td>
                     {!isPhone && (
                       <td
                         className={

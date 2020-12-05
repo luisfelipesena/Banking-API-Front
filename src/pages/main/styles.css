@@ -713,10 +713,20 @@ td button img {
   height: 3em;
 }
 
-@media (max-width: 1000px) {
-  .usuario {
-    margin-top: 5em !important;
-    margin-left: 2em;
+@media (max-width: 1100px) {
+  .nome-email-cliente {
+    max-width: 80%;
+  }
+
+  .descricoes-cliente {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+  }
+
+  .descricoes-cliente span {
+    margin: 0;
+    align-self: flex-start;
   }
 
   .clientes-pages,
@@ -780,21 +790,11 @@ td button img {
     font-size: calc(8px + 1vw);
   }
 
-  .usuario {
-    margin-top: 0em !important;
-    margin-left: 0;
-    align-self: center;
-  }
-
   .header-content {
     align-items: center;
   }
 
   .divConteudo {
     padding: 0.2em;
-  }
-
-  .divSaldo {
-    padding: 0.5em;
   }
 }

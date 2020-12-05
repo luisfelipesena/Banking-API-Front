@@ -1,8 +1,10 @@
 import React from "react";
 import user from "../../assets/perfil.svg";
 import logout from "../../assets/logout.svg";
+import { UseMediaQuery } from "../../utils/mediaQuery";
 
 export const Header = () => {
+  const media = UseMediaQuery("(max-width: 1200px)");
   const [deslogar, setDeslogar] = React.useState(false);
   return (
     <div className="cobrancas-header">
@@ -10,23 +12,25 @@ export const Header = () => {
         <div className="criar-cobranca">
           <h2>{"// criar cobrança"}</h2>
         </div>
-        <div className="usuario">
-          <button onClick={() => setDeslogar(deslogar ? false : true)}>
-            <img src={user} alt="usuário" />
-          </button>
-          {deslogar && (
-            <button
-              onClick={() => {
-                localStorage.setItem("token", null);
-                window.location.href = "/";
-              }}
-              className="logout"
-            >
-              <img src={logout} alt="logout" />
-              <span>Deslogar</span>
+        {!media && (
+          <div className="usuario">
+            <button onClick={() => setDeslogar(deslogar ? false : true)}>
+              <img src={user} alt="usuário" />
             </button>
-          )}
-        </div>
+            {deslogar && (
+              <button
+                onClick={() => {
+                  localStorage.setItem("token", null);
+                  window.location.href = "/";
+                }}
+                className="logout"
+              >
+                <img src={logout} alt="logout" />
+                <span>Deslogar</span>
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

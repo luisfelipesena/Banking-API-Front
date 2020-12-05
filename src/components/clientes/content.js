@@ -124,10 +124,14 @@ export const Content = (props) => {
                       </div>
                     </td>
                     <td>
-                      R$ {Number(c.cobrancasFeitas).toLocaleString("pt-BR")}
+                      R${" "}
+                      {Number(c.cobrancasFeitas / 100).toLocaleString("pt-BR")}
                     </td>
                     <td>
-                      R$ {Number(c.cobrancasRecebidas).toLocaleString("pt-BR")}
+                      R${" "}
+                      {Number(c.cobrancasRecebidas / 100).toLocaleString(
+                        "pt-BR"
+                      )}
                     </td>
                     {!isPhone && (
                       <td

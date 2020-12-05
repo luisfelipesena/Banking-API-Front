@@ -28,7 +28,7 @@ export const Form = () => {
           const cobranca = await CriarCobranca(
             Number(cliente.id),
             dados.descricao,
-            Number(dados.valor),
+            Number(dados.valor.toLocaleString("pt-BR")),
             dados.vencimento.split("-").reverse().join("/"),
             token
           );
@@ -104,6 +104,7 @@ export const Form = () => {
         </div>
         <div className="form-botoes">
           <button
+            type="button"
             onClick={() => {
               window.location.href = "/home";
             }}

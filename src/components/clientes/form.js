@@ -77,6 +77,7 @@ export const Form = () => {
         </div>
         <div className="form-botoes">
           <button
+            type="button"
             onClick={() => {
               window.location.href = "/home";
             }}

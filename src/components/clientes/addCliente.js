@@ -1,8 +1,8 @@
 import { UseFetch } from "../../utils/fetch";
-import { cpf } from "cpf-cnpj-validator";
+const cpf = require("node-cpf");
 
 export const addCliente = async (token, nome, Cpf, email, tel) => {
-  if (!cpf.isValid(Cpf)) {
+  if (!cpf.validate(Cpf)) {
     return null;
   }
   const request = await UseFetch(
@@ -10,7 +10,7 @@ export const addCliente = async (token, nome, Cpf, email, tel) => {
     "POST",
     {
       nome,
-      cpf: cpf.format(Cpf),
+      cpf: cpf.length !== 11 ? cpf.mask(Cpf) : Cpf,
       email,
       tel,
     },

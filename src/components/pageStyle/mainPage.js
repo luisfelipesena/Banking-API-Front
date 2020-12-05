@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../pages/main/styles.css";
 import logo_cubos_white from "../../assets/logo_cubos_white.svg";
+import logout from "../../assets/logout-white.svg";
 import home from "../../assets/home.svg";
 import cobrancas from "../../assets/cobrancas.svg";
 import clientes from "../../assets/clientes.svg";
@@ -9,7 +10,7 @@ import { UseMediaQuery } from "../../utils/mediaQuery";
 import hamburger from "../../assets/hamburger-menu.svg";
 
 export const MainPageStyle = (Page) => {
-  const media = UseMediaQuery("(max-width: 1200px)");
+  const media = UseMediaQuery("(max-width: 1400px)");
   const [menu, setMenu] = React.useState(false);
   const [troca, setTroca] = React.useState(!media);
   const token = localStorage.getItem("token");
@@ -80,7 +81,7 @@ export const MainPageStyle = (Page) => {
                 </div>
               ) : (
                 <>
-                  <div className="barra-lateral">
+                  <div className="barra-lateral" style={{ flex: 1 }}>
                     <div className="divHamburguer">
                       <button
                         onClick={() => {
@@ -98,6 +99,10 @@ export const MainPageStyle = (Page) => {
                     />
                     <ul>
                       <Link
+                        onClick={() => {
+                          setMenu(!menu);
+                          setTroca(true);
+                        }}
                         to="/home"
                         className={url === "home" ? "li-clicado link" : "link"}
                       >
@@ -108,6 +113,10 @@ export const MainPageStyle = (Page) => {
                       </Link>
 
                       <Link
+                        onClick={() => {
+                          setMenu(!menu);
+                          setTroca(true);
+                        }}
                         to="/cobrancas"
                         className={
                           url === "cobrancas" ? "li-clicado link" : "link"
@@ -120,6 +129,10 @@ export const MainPageStyle = (Page) => {
                       </Link>
 
                       <Link
+                        onClick={() => {
+                          setMenu(!menu);
+                          setTroca(true);
+                        }}
                         to="/clientes"
                         className={
                           url === "clientes" ? "li-clicado link" : "link"
@@ -136,8 +149,36 @@ export const MainPageStyle = (Page) => {
                     >
                       Criar cobrança
                     </button>
+                    <div
+                      className="usuario"
+                      style={{ margin: "5em 5em 0 0em" }}
+                    >
+                      <button
+                        style={{
+                          color: "white",
+                          boxShadow: "none",
+                          marginLeft: "5em",
+                        }}
+                        onClick={() => {
+                          localStorage.setItem("token", null);
+                          window.location.href = "/";
+                        }}
+                        className="logout"
+                      >
+                        <img
+                          src={logout}
+                          style={{ color: "white", marginRight: "1em" }}
+                          alt="logout"
+                        />
+                        <span>Deslogar</span>
+                      </button>
+                    </div>
                   </div>
                   <div
+                    onClick={() => {
+                      setMenu(!menu);
+                      setTroca(true);
+                    }}
                     style={{
                       position: "fixed",
                       zIndex: 5,
