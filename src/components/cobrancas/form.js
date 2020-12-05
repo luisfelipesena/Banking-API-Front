@@ -47,7 +47,7 @@ export const Form = () => {
             id="clientes"
             options={clientes}
             onSelect={(ev) => {
-              const [id] = ev.target.value.split("-");
+              const [id] = ev.target.value.replace("#", "").split("-");
               setCliente(
                 clientes.find((c) => {
                   if (Number(c.id) === Number(id)) {
@@ -58,7 +58,7 @@ export const Form = () => {
               );
             }}
             getOptionLabel={(option) => {
-              return `${option.id} - ${option.nome}`;
+              return `#${option.id} - ${option.nome}`;
             }}
             style={{ width: "99.5%" }}
             renderInput={(params) => (
@@ -80,7 +80,7 @@ export const Form = () => {
               ref={register}
               name="valor"
               className="valor"
-              placeholder="R$ 0,00"
+              placeholder="00.00"
               type="number"
               min="0"
               pattern="[0-9]+([,\.][0-9]+)?"

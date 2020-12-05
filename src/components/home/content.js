@@ -5,6 +5,7 @@ import faturamento from "../../assets/faturamento.svg";
 import { Relatorio } from "./getRelatorios";
 import { Token } from "./index";
 import { UseMediaQuery } from "../../utils/mediaQuery";
+import { TabelaRelatorios } from "./tabelaRelatorios";
 
 export const Content = () => {
   const isPhone = UseMediaQuery("(max-width:500px)");
@@ -76,7 +77,7 @@ export const Content = () => {
             </div>
             <div className="vermelho">
               <span>Inadimplentes</span>
-              <h2>{relatorio ? relatorio.qtdClientesAdimplentes : "..."}</h2>
+              <h2>{relatorio ? relatorio.qtdClientesInadimplentes : "..."}</h2>
             </div>
           </div>
         </div>
@@ -109,8 +110,7 @@ export const Content = () => {
           </div>
 
           <div className="faturamento-content">
-            <h2>Em andamento</h2>
-            {relatorio && relatorio.saldoEmConta}
+            <TabelaRelatorios data={"faturamento por mes"} />
           </div>
         </div>
       </div>

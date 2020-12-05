@@ -12,7 +12,7 @@ export const Header = () => {
 
   React.useEffect(() => {
     SaldoUser().then((s) => {
-      const saldoFormatado = `${s / 100}`;
+      const saldoFormatado = Number(s).toLocaleString("pt-BR");
       setSaldo(saldoFormatado);
     });
   }, []);

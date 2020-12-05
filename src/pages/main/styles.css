@@ -183,7 +183,10 @@
 .temporalidades {
   display: flex;
   align-items: flex-start;
-  border-bottom: 1px solid #263238;
+}
+
+.chartjs-render-monitor {
+  max-width: 90%;
 }
 
 .temporalidades button {
@@ -450,7 +453,6 @@ input[type="number"] {
   flex: 0 1 500px;
   position: relative;
   margin-top: 0 !important;
-  z-index: -5;
 }
 
 .input-procurar input {
@@ -648,6 +650,10 @@ td button img {
   .inputs,
   .form-botoes {
     flex-wrap: wrap;
+  }
+
+  .faturamento-content {
+    padding: 1em;
   }
 
   .clientes-pages,

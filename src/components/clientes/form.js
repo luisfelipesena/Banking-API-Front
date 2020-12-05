@@ -20,7 +20,6 @@ export const Form = () => {
             dados.nome &&
             dados.email &&
             dados.cpf &&
-            dados.cpf.length === 14 &&
             dados.telefone &&
             dados.telefone.length === 14
           ) {
@@ -34,6 +33,8 @@ export const Form = () => {
             if (request) {
               alert("Cliente Criado Com Sucesso !!");
               return (window.location.href = "/home");
+            } else if (request === null) {
+              return alert("CPF inválido");
             }
           }
           alert("Cliente não foi adicionado");
@@ -59,7 +60,7 @@ export const Form = () => {
               ref={register}
               name="cpf"
               className="cpf"
-              placeholder="___-___-___-__"
+              placeholder="55555555555"
               inputMode="numeric"
             />
           </label>
@@ -70,7 +71,7 @@ export const Form = () => {
               name="telefone"
               className="tel"
               inputMode="numeric"
-              placeholder="+__ (__) 9________"
+              placeholder="+99(99)999999999"
             />
           </label>
         </div>

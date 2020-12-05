@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Desafio 4 - Cubos Academy - Front-end
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esse desafio consiste na criação de uma API bem trabalhada de um banking o qual terceiriza um sistema de cobranças. Os usuários, após se cadastrarem na plataforma, podem cadastrar os clientes deles e criar uma cobrança para que os clientes paguem. Os clientes recebem um email com o link do boleto para pagar.
 
-## Available Scripts
+Além disso, nesta plataforma os usuários podem ver e buscar clientes, ver e buscar cobranças, marcar uma cobrança como paga, ver um resumo de todo o financeiro, dentre outras coisas que estarão mais detalhadas abaixo.
 
-In the project directory, you can run:
+- Tecnologia:
+  - React Jsx
 
-### `yarn start`
+![logo](https://camo.githubusercontent.com/fc91b16ed6408990dd91570c627295f5efe6f27bfb3c7b64e1d2ff1a6c7d2791/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f67757079352f70726f64756374696f6e2f636f6d70616e6965732f3330302f696d616765732f6a6f62732f3437393535302f32303230303930393039323033323139345f736f6369616c506963747572652e6a7067)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![home](https://cdn.discordapp.com/attachments/407006330843561985/784569761123532830/Tela_Principal.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![gifLogin](https://cdn.discordapp.com/attachments/407006330843561985/784569766882705478/ezgif.com-gif-maker_1.gif)
 
-### `yarn test`
+![gifHome](https://cdn.discordapp.com/attachments/407006330843561985/784569766534578206/ezgif.com-gif-maker.gif)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Organização do Código:
 
-### `yarn build`
+- `App.css`
+- `App.js`
+- `src`
+  - `assets`-> `images.svg` -> todas as imagens utilizadas
+  - `components`
+    - `cadastro` -> lógica e componentes de cadastro
+    - `clientes` -> lógica e componentes de clientes
+    - `cobrancas` -> lógica e componentes de cobrancas
+    - `esqueci-senha` -> lógica e componentes de esqueci-senha
+    - `home` -> lógica e componentes de home
+    - `login` -> lógica e componentes de login
+    - `pageStyle` -> componentes de todo o "estilo" == `html` das páginas
+    - `trocar-senha` -> lógica e componentes de trocar-senha
+  - `pages`
+    - `login-cadastro`
+      - `cadastro` -> container de todo cadastro
+      - `esqueci-senha` -> container de todo esqueci-senha
+      - `login` -> container de todo login
+      - `trocar-senha` -> container de todo trocar-senha
+      - `styles.css` -> estilos de todo os containers relacionados a `login-cadastro`
+    - `main`
+      - `clientes` -> container de todo clientes
+      - `cobrancas` -> container de todo cobrancas
+      - `home` -> container de todo home
+      - `styles.css` -> estilos de todo os containers relacionados a `main`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Desenvolvedores:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[Luis Felipe Sena](https://www.linkedin.com/in/luisfelipesena/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Guido Lime Bernal](https://www.linkedin.com/in/guido-bernal-6143421b0/)

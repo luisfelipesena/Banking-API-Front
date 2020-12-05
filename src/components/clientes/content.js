@@ -6,6 +6,7 @@ import editar from "../../assets/editar-cliente.svg";
 import { useForm } from "react-hook-form";
 import { UseMediaQuery } from "../../utils/mediaQuery";
 import { getClients, getClientsSearch } from "./getClients";
+import { editarCliente } from "./editarCliente";
 
 export const Content = (props) => {
   const { watch, register } = useForm();
@@ -15,21 +16,25 @@ export const Content = (props) => {
   const [inputClicado, setInput] = React.useState({ id: null, valor: false });
   const [clientes, setClientes] = React.useState(null);
   const [clientesProcurados, setClientesProcurados] = React.useState(null);
+  const [atualizacao, setAtualizacao] = React.useState(null);
 
   const procura = watch("procura");
+  const nome = watch("nome");
+  const email = watch("email");
+  const tel = watch("tel");
 
   React.useEffect(() => {
     if (procura && procura !== "") {
       getClientsSearch(token, offset, procura).then((r) => {
-        setClientesProcurados(r);
+        setClientesProcurados(r.sort((a, b) => a.id - b.id));
       });
     } else {
       setClientesProcurados(null);
       getClients(token, offset).then((r) => {
-        setClientes(r);
+        setClientes(r.sort((a, b) => a.id - b.id));
       });
     }
-  }, [token, offset, procura]);
+  }, [token, offset, procura, atualizacao]);
 
   return (
     <div className="divConteudo">
@@ -71,7 +76,7 @@ export const Content = (props) => {
                 return (
                   <tr key={c.id}>
                     <td>
-                      {!inputClicado.valor && inputClicado.id !== c.id ? (
+                      {!inputClicado.valor || inputClicado.id !== c.id ? (
                         <h2 className="nome-email-cliente">
                           <span>{c.nome}</span>
                         </h2>
@@ -79,6 +84,8 @@ export const Content = (props) => {
                         <>
                           <span>
                             <input
+                              ref={register}
+                              name="nome"
                               placeholder="Nome do Cliente"
                               className="editar-cliente"
                             />
@@ -86,34 +93,42 @@ export const Content = (props) => {
                         </>
                       )}
                       <div className="descricoes-cliente">
-                        {!inputClicado.valor && inputClicado.id !== c.id ? (
+                        {!inputClicado.valor || inputClicado.id !== c.id ? (
                           <>
                             <img src={gmail} alt="email" />
                             <span>{c.email}</span>
                           </>
                         ) : (
                           <input
+                            ref={register}
+                            name="email"
                             placeholder="Email"
                             className="editar-cliente"
                           />
                         )}
                       </div>
                       <div className="descricoes-cliente">
-                        {!inputClicado.valor && inputClicado.id !== c.id ? (
+                        {!inputClicado.valor || inputClicado.id !== c.id ? (
                           <>
                             <img src={telefone} alt="telefone" />
                             <span>{c.tel}</span>
                           </>
                         ) : (
                           <input
+                            ref={register}
+                            name="tel"
                             placeholder="Telefone"
                             className="editar-cliente"
                           />
                         )}
                       </div>
                     </td>
-                    <td>R$ {c.cobrancasFeitas}</td>
-                    <td>R$ {c.cobrancasRecebidas}</td>
+                    <td>
+                      R$ {Number(c.cobrancasFeitas).toLocaleString("pt-BR")}
+                    </td>
+                    <td>
+                      R$ {Number(c.cobrancasRecebidas).toLocaleString("pt-BR")}
+                    </td>
                     {!isPhone && (
                       <td
                         className={
@@ -126,11 +141,26 @@ export const Content = (props) => {
 
                     <td>
                       <button
-                        onClick={(i) => {
+                        onClick={async () => {
                           setInput({
                             id: c.id,
                             valor: !inputClicado.valor ? true : false,
                           });
+                          if (nome && email && tel && inputClicado.valor) {
+                            if (tel.length === 14) {
+                              const request = await editarCliente(
+                                token,
+                                c.id,
+                                nome,
+                                email,
+                                tel
+                              );
+                              if (request) {
+                                return setAtualizacao(true);
+                              }
+                            }
+                            alert(`Formulário de ${c.nome} mal formatado`);
+                          }
                         }}
                       >
                         <img alt="editar cliente" src={editar} />

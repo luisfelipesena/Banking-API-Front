@@ -4,6 +4,7 @@ import impressao from "../../assets/impressao.svg";
 import { useForm } from "react-hook-form";
 import { UseMediaQuery } from "../../utils/mediaQuery";
 import { getCobrancas, getCobrancasSearch } from "./getCobrancas";
+import { realizarPagamento } from "./realizarPagamento";
 import statusPago from "../../assets/status-pago.svg";
 import statusPendente from "../../assets/status-pendente.svg";
 
@@ -14,19 +15,22 @@ export const Cobrancas = (props) => {
   const isPhone = UseMediaQuery("(max-width: 600px)");
   const [cobrancas, setCobrancas] = React.useState(null);
   const [cobrancasProcuradas, setCobrancasProcuradas] = React.useState(null);
+  const [pay, setPay] = React.useState(null);
 
   const procura = watch("procura");
 
   React.useEffect(() => {
     if (procura && procura !== "") {
       getCobrancasSearch(token, offset, procura).then((r) => {
-        setCobrancasProcuradas(r);
+        setCobrancasProcuradas(r.sort((a, b) => a.id - b.id));
       });
     } else {
       setCobrancasProcuradas(null);
-      getCobrancas(token, offset).then((r) => setCobrancas(r));
+      getCobrancas(token, offset).then((r) =>
+        setCobrancas(r.sort((a, b) => a.id - b.id))
+      );
     }
-  }, [token, offset, procura]);
+  }, [token, offset, procura, pay]);
 
   return (
     <div className="divConteudo">
@@ -62,17 +66,17 @@ export const Cobrancas = (props) => {
 
           <tbody>
             {(cobrancasProcuradas || cobrancas) &&
-              (cobrancasProcuradas || cobrancas).map((c, i) => {
+              (cobrancasProcuradas || cobrancas).map((c) => {
                 const link = c.link_do_boleto;
                 return (
-                  <tr key={i}>
+                  <tr key={c.id}>
                     <td>
                       <h2 className="nome-email-cliente">
                         {c.nome_do_cliente}
                       </h2>
                     </td>
                     {!isPhone && <td>{c.descricao}</td>}
-                    <td>R$ {c.valor}</td>
+                    <td>R$ {Number(c.valor).toLocaleString("pt-BR")}</td>
                     {!isPhone && (
                       <td
                         className={
@@ -106,7 +110,13 @@ export const Cobrancas = (props) => {
                     {!isPhone && (
                       <td
                         style={{ cursor: "pointer" }}
-                        onClick={() => (window.location.href = link)}
+                        onClick={async () => {
+                          const request = realizarPagamento(token, c.id);
+                          if (request) {
+                            setPay(true);
+                            window.open(link);
+                          }
+                        }}
                       >
                         <img alt="impressão" src={impressao} />
                       </td>
